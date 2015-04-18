@@ -95,8 +95,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 698931778}
-  - 33: {fileID: 698931777}
-  - 23: {fileID: 698931776}
+  - 212: {fileID: 698931776}
   - 61: {fileID: 698931775}
   m_Layer: 9
   m_Name: Ground
@@ -117,21 +116,21 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .99999994, y: 1}
---- !u!23 &698931776
-MeshRenderer:
+  m_Size: {x: 3.19999981, y: .800000012}
+--- !u!212 &698931776
+SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 698931774}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e9c257df6283fa4c90adf43bbb21fa1, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
+  m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
@@ -142,13 +141,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &698931777
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 698931774}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 58c4009b38e80424ca1ae62e5e311a70, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &698931778
 Transform:
   m_ObjectHideFlags: 0
@@ -272,13 +266,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1172181458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c619ae128aa3744d8e66c7cfd18ab0c, type: 3}
+  m_Script: {fileID: 11500000, guid: f4e8e1465c941aa49aa000feadf52e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 8, y: 2}
-  distance: 24
-  groundAdded: -3
-  groundBack: -3
+  size: {x: 4, y: 2}
+  distance: 48
 --- !u!1 &1333833425
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,13 +424,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1692809788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f80d39e455bd8ae40a3f498252c0388a, type: 3}
+  m_Script: {fileID: 11500000, guid: a6c4b45f4d9c0d5419c4da089433f9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1701075330}
-  distance: 10
-  height: .5
-  dampening: 10
+  distance: 3
+  height: 3
+  dampening: 5
 --- !u!1 &1701075325
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,13 +531,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701075325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7878da02c7103754c8bceb87b9b72f92, type: 3}
+  m_Script: {fileID: 11500000, guid: 01e2b08f75103db4eb084f8d7618d564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedForce: 10
   speed: 1
   length: .600000024
-  ground: {}
+  ground:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &1701075332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +548,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701075325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f05937c50258b854abc603bdb83bc86b, type: 3}
+  m_Script: {fileID: 11500000, guid: d31df6846ac177f4b9d8424c3c26dbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
