@@ -209,7 +209,11 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: c69291d1bdbffcd43831fe0c3c10a46d, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: 58c4009b38e80424ca1ae62e5e311a70, type: 3}
+>>>>>>> 1cef976ae15ba5a15f135e9038d1f2a68b124157
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &698931778
 Transform:
@@ -402,7 +406,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1172181458}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: a53805eafaf53614ab3237e27b64ab73, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: f4e8e1465c941aa49aa000feadf52e39, type: 3}
+>>>>>>> 1cef976ae15ba5a15f135e9038d1f2a68b124157
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 4, y: 2}
@@ -560,6 +568,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1692809788}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 608e211ed9f535f43bd4df59d53de907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -567,6 +576,15 @@ MonoBehaviour:
   distance: 10
   height: 2.5
   dampening: 10
+=======
+  m_Script: {fileID: 11500000, guid: a6c4b45f4d9c0d5419c4da089433f9bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1701075330}
+  distance: 3
+  height: 3
+  dampening: 5
+>>>>>>> 1cef976ae15ba5a15f135e9038d1f2a68b124157
 --- !u!1 &1701075325
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +685,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701075325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca2826b0090a08644a1721f67aa3d0e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 01e2b08f75103db4eb084f8d7618d564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedForce: 10
@@ -675,7 +693,7 @@ MonoBehaviour:
   length: .600000024
   ground:
     serializedVersion: 2
-    m_Bits: 4608
+    m_Bits: 512
 --- !u!114 &1701075332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,7 +702,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701075325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc458ae03229904e992a127d3dc589d, type: 3}
+  m_Script: {fileID: 11500000, guid: d31df6846ac177f4b9d8424c3c26dbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
