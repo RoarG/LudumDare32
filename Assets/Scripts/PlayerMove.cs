@@ -3,11 +3,16 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
 
+
 	private float weight;
 
 	public float speedForce = 10.0f;
 	public static Vector2 jumpVector = new Vector2(0.0f, 400.0f);
 	public float speed = 1.0f;
+
+	private float oldSpeed = 5.0f;
+
+
 
 	private bool isGrounded;
 
@@ -30,6 +35,14 @@ public class PlayerMove : MonoBehaviour {
 			GetComponent<Rigidbody2D>().velocity = new Vector2 (speedForce - (4*weight/100), GetComponent<Rigidbody2D>().velocity.y);
 		} else {
 			GetComponent<Rigidbody2D>().velocity = new Vector2 (0, GetComponent<Rigidbody2D>().velocity.y);
+		}
+
+		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+			oldSpeed = speedForce;
+			speedForce *= 10.0f;
+		}
+		if (Input.GetKeyUp (KeyCode.LeftShift)) {
+			speedForce = oldSpeed;
 		}
 
 		isGrounded = Physics2D.Linecast (this.transform.position, new Vector2 (transform.position.x, transform.position.y - length), ground);// OverlapCircle (transform.position, radius, ground);
