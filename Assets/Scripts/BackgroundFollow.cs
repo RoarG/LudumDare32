@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SunFollow : MonoBehaviour {
+public class BackgroundFollow : MonoBehaviour {
 
 	public Vector3 offset;
-
+	
 	public Transform camera;
-
+	
 	// Use this for initialization
 	void Start () {
 		camera = GameObject.FindGameObjectWithTag("MainCamera").transform;

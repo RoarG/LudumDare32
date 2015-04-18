@@ -3,11 +3,11 @@ using System.Collections;
 
 public class TerrarinGenerator : MonoBehaviour {
 
-	public Vector2 size = new Vector2(8.0f, 2.0f);
-	public float distance = 3 * 8.0f;
+	public Vector2 size = new Vector2(4.0f, 2.0f);
+	public float distance = 48.0f;
 
-	public int groundAdded = -3;
-	public int groundBack = -3;
+	private int groundAdded = -3;
+	private int groundBack = -3;
 
 	private Transform ground;
 	private Transform player;
