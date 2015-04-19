@@ -8,19 +8,19 @@ TagManager:
   - Ground
   - Enemy
   layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - User
+  - Ground
+  - Background
+  - NPC
+  - Objects
   - 
   - 
   - 
