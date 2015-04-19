@@ -23,6 +23,12 @@
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+# include meta files
+!*.*.meta
+!*.*.gitignore
+
+
+
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
