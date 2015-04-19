@@ -11,8 +11,7 @@ public class TerrarinGenerator : MonoBehaviour {
 
 	private Transform ground;
 	private Transform player;
-
-
+	
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -20,23 +19,24 @@ public class TerrarinGenerator : MonoBehaviour {
 		ground.localScale = new Vector3 (size.x, size.y, 1.0f);
 
 		for (; groundAdded < 3;) {
-			Transform newGround = Instantiate (ground, new Vector3(groundAdded * size.x * 3.2f, 0, 0), Quaternion.identity) as Transform;
-			newGround.name = "Ground#" + groundAdded++;
+			Transform newGround = Instantiate (ground, new Vector3(groundAdded * size.x * 3.2f, 0, 1.0f), Quaternion.identity) as Transform;
+			newGround.name = "Ground#" + groundAdded;
 			newGround.SetParent(this.transform);
+			groundAdded++;
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if ((Mathf.Abs(groundAdded * size.x) - Mathf.Abs(player.position.x)) <= distance) {
-			Transform newGround = Instantiate (ground, new Vector3(groundAdded * size.x * 3.2f, 0, 0), Quaternion.identity) as Transform;
+			Transform newGround = Instantiate (ground, new Vector3(groundAdded * size.x * 3.2f, 0, 1.0f), Quaternion.identity) as Transform;
 			newGround.name = "Ground#" + groundAdded;
 			newGround.SetParent(this.transform);
 			groundAdded++;
 		}
 
 		if ((Mathf.Abs(groundBack * size.x) - Mathf.Abs(player.position.x)) <= distance) {
-			Transform newGround = Instantiate (ground, new Vector3(groundBack * size.x * 3.2f, 0, 0), Quaternion.identity) as Transform;
+			Transform newGround = Instantiate (ground, new Vector3(groundBack * size.x * 3.2f, 0, 1.0f), Quaternion.identity) as Transform;
 			newGround.name = "Ground#" + groundBack;
 			newGround.SetParent(this.transform);
 			groundBack--;
