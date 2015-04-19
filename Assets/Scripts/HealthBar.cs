@@ -10,12 +10,15 @@ public class HealthBar : MonoBehaviour {
     private float maxXvalue;
     private int currentHealth;
 
-    private int CurrentHealth
+    PlayerVariables playerVar;
+
+    public int CurrentHealth
     {
         get { return currentHealth; }
         set { 
             currentHealth = value;
             HandleHealth();
+            playerVar.health = currentHealth;
             }
     }
 
@@ -37,11 +40,12 @@ public class HealthBar : MonoBehaviour {
         maxXvalue = healthTransform.position.x - healthTransform.rect.width;
         currentHealth = (int) maxHealth;
         onCD = false;
+        playerVar = GetComponent<PlayerVariables>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 
     IEnumerator CoolDownDmg()
@@ -60,11 +64,11 @@ public class HealthBar : MonoBehaviour {
 
         healthTransform.position = new Vector3(currentXvalue, cachedY);
 
-        if (currentHealth > emptyAmmo)
+        if (currentHealth > emptyAmmo) //More than emptyAmmo
         {
             visualHealth.color = new Color32((byte)MapValues(currentHealth, emptyAmmo, maxHealth, 255, 0), 255, 0, 255);
         }
-        else
+        else //less then emptyAmmo
         {
             visualHealth.color = new Color32(255,(byte)MapValues(currentHealth, 0, emptyAmmo, 0, 255), 0, 255);
         }
@@ -73,5 +77,30 @@ public class HealthBar : MonoBehaviour {
     private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
     {
         return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin; 
+    }
+
+    void OnTriggerStay2D(Collider2D other) 
+    {
+        Debug.Log("Ontrigger: " + other);
+        if (other.name == "Damage")
+        {
+            Debug.Log("Taking Damage onCD: " + onCD  + "  currentHealth: " + currentHealth);
+            if (!onCD && currentHealth > 0)
+            {
+                Debug.Log("IF !oncd and currenHEalth");
+                StartCoroutine(CoolDownDmg());
+                CurrentHealth -= 1;
+            }
+        }
+        if (other.name == "Health")
+        {
+            Debug.Log("Getting Healed" + onCD  + "  currentHealth: " + currentHealth);
+            if (!onCD && currentHealth < maxHealth)
+            {
+                Debug.Log("IF !oncd and currenhealth less than maxhealth");
+                StartCoroutine(CoolDownDmg());
+                CurrentHealth += 1;
+            }
+        }
     }
 }
