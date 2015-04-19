@@ -41,10 +41,12 @@ public class HealthBar : MonoBehaviour {
         currentHealth = (int) maxHealth;
         onCD = false;
         playerVar = GetComponent<PlayerVariables>();
+        
+
 
     //    healthTransform
      //   healthText
-     //   visualHealth = game
+     //   visualHealth = GameObject.Find("Health").GetComponent<Image>;
 	}
 	
 	// Update is called once per frame

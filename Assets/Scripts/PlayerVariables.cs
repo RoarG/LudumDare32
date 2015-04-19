@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerVariables : MonoBehaviour {
 
-	public int health = 50; // variable from 0-50
+	public int health = 100; // variable from 0-100
 	public static float weight = 100.0f; // variable from 0-100
 	public int fatnessLevel; // variable from 1-3?
 	static bool poweredUp = false;
