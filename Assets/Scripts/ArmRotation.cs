@@ -7,7 +7,7 @@ public class ArmRotation : MonoBehaviour {
 	public float differenceX;
 	static bool changeDirection = false;
 	static string direction;
-	float changeX = 1.4f;
+	float changeX = 0.5f;
 	public float thePosX;
 
 

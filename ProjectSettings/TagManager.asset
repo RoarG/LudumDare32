@@ -6,6 +6,13 @@ TagManager:
   tags:
   - PowerUp
   - Ground
+  - Enemy
+  - Ground_front
+  - Ground_behind
+  - Mountains
+  - Sky
+  - Horizon
+  - Clouds
   layers:
   - Default
   - TransparentFX

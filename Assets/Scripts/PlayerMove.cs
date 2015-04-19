@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour {
 	public float speed = 1.0f;
 	public float differenceX;
 	public static bool facingRight = true;
-	public int posChange = 3;
+	public int posChange = 1;
 	private float oldSpeed = 5.0f;
 
 
