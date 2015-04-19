@@ -9,12 +9,13 @@ public class PlayerMove : MonoBehaviour {
 	public float speedForce = 10.0f;
 	public static Vector2 jumpVector = new Vector2(0.0f, 400.0f);
 	public float speed = 1.0f;
+	public float differenceX;
+	public static bool facingRight = true;
+
 
 	private float oldSpeed = 5.0f;
 
-
-
-	private bool isGrounded;
+	public bool isGrounded;
 
 	public float length = 0.6f;
 	public LayerMask ground;
@@ -27,6 +28,24 @@ public class PlayerMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Vector3 mousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		Vector3 moveDirection = (mousePosition - transform.position).normalized;
+
+
+		differenceX = moveDirection.x;
+
+		if (differenceX > 0 && !facingRight) {
+			Vector3 theScale = transform.localScale;
+			theScale.x *=-1;
+			transform.localScale = theScale;
+			facingRight = true;
+		} else if (differenceX < 0 && facingRight) {
+			Vector3 theScale = transform.localScale;
+			theScale.x *=-1;
+			transform.localScale = theScale;
+			facingRight = false;
+		}
+
 		weight = PlayerVariables.weight;
 		speed = (speedForce - ((speedForce-1) * weight / 100));
 		if (Input.GetKey (KeyCode.A)) {
@@ -36,6 +55,7 @@ public class PlayerMove : MonoBehaviour {
 		} else {
 			GetComponent<Rigidbody2D>().velocity = new Vector2 (0, GetComponent<Rigidbody2D>().velocity.y);
 		}
+	
 
 		if (Input.GetKeyDown (KeyCode.LeftShift)) {
 			oldSpeed = speedForce;
@@ -46,6 +66,7 @@ public class PlayerMove : MonoBehaviour {
 		}
 
 		isGrounded = Physics2D.Linecast (this.transform.position, new Vector2 (transform.position.x, transform.position.y - length), ground);// OverlapCircle (transform.position, radius, ground);
+
 
 		if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
 			GetComponent<Rigidbody2D>().AddForce (jumpVector, ForceMode2D.Force);
@@ -59,9 +80,12 @@ public class PlayerMove : MonoBehaviour {
 		}		
 	}
 
+
+
 	float setMass() {
 		return 1.0f + (1 * (weight / 100));
 	}
+	
 
 	
 
