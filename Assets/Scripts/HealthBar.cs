@@ -8,10 +8,18 @@ public class HealthBar : MonoBehaviour {
     public RectTransform healthTransform;
     private float minXvalue;
     private float maxXvalue;
+    public float maxHealth;
     private int currentHealth;
 
+    public float coolDown;
+    private bool onCD;
+
+    public Text healthText;
+    public Image visualHealth;
     PlayerVariables playerVar;
 
+    //Endrer fargen til barn når den er under denne.
+    public int emptyAmmo = 20;
     public int CurrentHealth
     {
         get { return currentHealth; }
@@ -22,22 +30,14 @@ public class HealthBar : MonoBehaviour {
             }
     }
 
-    public float maxHealth;
 
-    public float coolDown;
-    private bool onCD;
 
-    public Text healthText;
-    public Image visualHealth;
-
-    //Endrer fargen til barn når den er under denne.
-    public int emptyAmmo = 20;
 
 	// Use this for initialization
 	void Start () {
         cachedY = healthTransform.position.y;
-        minXvalue = healthTransform.position.x;
-        maxXvalue = healthTransform.position.x - healthTransform.rect.width;
+        minXvalue = 0;
+        maxXvalue = healthTransform.localScale.x;
         currentHealth = (int) maxHealth;
         onCD = false;
         playerVar = GetComponent<PlayerVariables>();
@@ -58,11 +58,14 @@ public class HealthBar : MonoBehaviour {
 
     private void HandleHealth()
     {
-        healthText.text = "Fat: " + currentHealth;
+        healthText.text = "Fat: " + currentHealth + "%";
 
         float currentXvalue = MapValues(currentHealth, 0, maxHealth, minXvalue, maxXvalue);
+        Debug.Log("Current X value: " + currentXvalue + "  healthTransform: " + healthTransform.position);
 
-        healthTransform.position = new Vector3(currentXvalue, cachedY);
+        healthTransform.localScale = new Vector3(currentXvalue, cachedY);
+
+        Debug.Log("Current X value: " + currentXvalue + "  healthTransform: " + healthTransform.position);
 
         if (currentHealth > emptyAmmo) //More than emptyAmmo
         {
