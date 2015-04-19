@@ -8,6 +8,7 @@ public class PlayerVariables : MonoBehaviour {
 	public int fatnessLevel; // variable from 1-3?
 	static bool poweredUp = false;
 	static float lastPowerUpStart = 0;
+
     HealthBar healthbar;
 
 
@@ -20,6 +21,8 @@ public class PlayerVariables : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
 		changeWeight (-0.1f);
 		updateMass ();
 
