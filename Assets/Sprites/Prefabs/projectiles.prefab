@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 101250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e54f75ea4ca2c249866a108e09c9d0e, type: 3}
+  m_Script: {fileID: 11500000, guid: b628988f053486542a79256a7e018c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21208542
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 586a6236b8396a647bb6ad9efea540ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c86a1bc6c8b6584eb75b54b7e00ae55, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

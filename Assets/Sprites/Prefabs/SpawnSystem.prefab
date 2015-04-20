@@ -1,13 +1,75 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &170480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 418678}
+  - 114: {fileID: 11491732}
+  m_Layer: 0
+  m_Name: SpawnSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &418678
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170480}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.61426258, y: 1.50615597, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11491732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e7400ae040bcb45be03908c10853c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 122134, guid: 5815c2f0afd358641b0e0b932a893e28, type: 2}
+  spawnValues: {x: 0, y: 0, z: 0}
+  enemyCount: 5
+  spawnWait: 10
+  startWait: 0
+  waveWait: 0
+  maxEnemy: 0
+  food: {fileID: 189552, guid: 3ba7fb5ebd659a545aa9eb8e2e4861b2, type: 2}
+  foodSpawnValues: {x: 0, y: 0, z: 0}
+  foodCount: 5
+  foodSpawnWait: 0
+  foodStartWait: 0
+  foodWaveWait: 0
+  maxFood: 0
+  alcohol: {fileID: 167346, guid: 3207fc6c18b163c40ac63413288ec16a, type: 2}
+  alcSpawnValues: {x: 0, y: 0, z: 0}
+  alcCount: 5
+  alcSpawnWait: 0
+  alcStartWait: 0
+  alcWaveWait: 0
+  maxAlc: 0
+  player: {fileID: 0}
+  spawnNum: 0
 --- !u!1001 &100100000
 Prefab:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 0}
+  m_RootGameObject: {fileID: 170480}
   m_IsPrefabParent: 1
