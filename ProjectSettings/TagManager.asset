@@ -14,6 +14,7 @@ TagManager:
   - Horizon
   - Clouds
   - Projectile_fat0
+  - Ground_middle
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Background
   - NPC
   - Objects
-  - 
+  - Projectiles
   - 
   - 
   - 

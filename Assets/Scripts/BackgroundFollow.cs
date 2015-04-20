@@ -14,6 +14,7 @@ public class BackgroundFollow : MonoBehaviour {
 	private GameObject horizon;
 	private GameObject mountains;
 	private GameObject ground_behind;
+	private GameObject ground_middle;
 	private GameObject ground_front;
 
 	private GameObject clouds;
@@ -50,9 +51,16 @@ public class BackgroundFollow : MonoBehaviour {
 			newGround_behind.SetParent(this.transform);
 		}
 
+		ground_middle = transform.FindChild ("ground_middle").gameObject;
+		for (int i = -3; i < 3; i++) {
+			Transform newGround_middle = Instantiate (ground_middle.transform, new Vector3(i * 40, offset.y - 2.5f, 1.5f), Quaternion.identity) as Transform;
+			newGround_middle.name = "ground_middle#" + newGround_middle.position.x;
+			newGround_middle.SetParent(this.transform);
+		}
+
 		ground_front = transform.FindChild ("ground_front").gameObject;
 		for (int i = -3; i < 3; i++) {
-			Transform newGround_front = Instantiate (ground_front.transform, new Vector3(i * 40, offset.y, 0.0f), Quaternion.identity) as Transform;
+			Transform newGround_front = Instantiate (ground_front.transform, new Vector3(i * 40, offset.y + 1.5f, 1.0f), Quaternion.identity) as Transform;
 			newGround_front.name = "ground_front#" + newGround_front.position.x;
 			newGround_front.SetParent(this.transform);
 		}
@@ -72,7 +80,7 @@ public class BackgroundFollow : MonoBehaviour {
 		foreach (GameObject h in GameObject.FindGameObjectsWithTag("Horizon")) {
 			if (h == horizon)
 				continue;
-			h.transform.position += new Vector3(deltaPos.x / 1.5f, deltaPos.y, 0.0f);
+			h.transform.position += new Vector3(deltaPos.x / 1.1f, deltaPos.y, 0.0f);
 			if (h.transform.position.x > frontPosX) {
 				frontPosX = h.transform.position.x;
 				front = h.transform;
@@ -102,7 +110,7 @@ public class BackgroundFollow : MonoBehaviour {
 		foreach (GameObject m in GameObject.FindGameObjectsWithTag("Mountains")) {
 			if (m == mountains)
 				continue;
-			m.transform.position += new Vector3(deltaPos.x / 2.0f, deltaPos.y, 0.0f);
+			m.transform.position += new Vector3(deltaPos.x / 1.2f, deltaPos.y, 0.0f);
 			if (m.transform.position.x > frontPosX) {
 				frontPosX = m.transform.position.x;
 				front = m.transform;
@@ -132,7 +140,7 @@ public class BackgroundFollow : MonoBehaviour {
 		foreach (GameObject g in GameObject.FindGameObjectsWithTag("Ground_behind")) {
 			if (g == ground_behind)
 				continue;
-			g.transform.position += new Vector3(deltaPos.x / 2.5f, deltaPos.y, 0.0f);
+			g.transform.position += new Vector3(deltaPos.x / 1.3f, deltaPos.y, 0.0f);
 			if (g.transform.position.x > frontPosX) {
 				frontPosX = g.transform.position.x;
 				front = g.transform;
@@ -144,15 +152,45 @@ public class BackgroundFollow : MonoBehaviour {
 		}
 		
 		if (Mathf.Sqrt(Mathf.Pow(front.position.x - player.position.x, 2)) <= distance) {
-			Transform newGround_behind = Instantiate (ground_behind.transform, new Vector3(front.position.x + 40, (camPos + offset).y - CameraFollow.height, 2.0f), Quaternion.identity) as Transform;
+			Transform newGround_behind = Instantiate (ground_behind.transform, new Vector3(front.position.x + 40, front.position.y, front.position.z), Quaternion.identity) as Transform;
 			newGround_behind.name = "ground_behind#" + front.position.x;
 			newGround_behind.SetParent(this.transform);
 		}
 		
 		if (Mathf.Sqrt(Mathf.Pow(player.position.x - (back.position.x - 40), 2)) <= distance) {
-			Transform newGround_behind = Instantiate (ground_behind.transform, new Vector3(back.position.x - 40, (camPos + offset).y - CameraFollow.height, 2.0f), Quaternion.identity) as Transform;
+			Transform newGround_behind = Instantiate (ground_behind.transform, new Vector3(back.position.x - 40, front.position.y, front.position.z), Quaternion.identity) as Transform;
 			newGround_behind.name = "ground_behind#" + back.position.x;
 			newGround_behind.SetParent(this.transform);
+		}
+
+		frontPosX = -2147483647;
+		backPosX = 2147483647;
+		front = null;
+		back = null;
+		foreach (GameObject g in GameObject.FindGameObjectsWithTag("Ground_middle")) {
+			if (g == ground_middle)
+				continue;
+			g.transform.position += new Vector3(deltaPos.y / 1.4f, deltaPos.y / 1.5f, 0.0f);
+			if (g.transform.position.x > frontPosX) {
+				frontPosX = g.transform.position.x;
+				front = g.transform;
+			}
+			if (g.transform.position.x < backPosX) {
+				backPosX = g.transform.position.x;
+				back = g.transform;
+			}
+		}
+		
+		if (Mathf.Sqrt(Mathf.Pow(front.position.x - player.position.x, 2)) <= distance) {
+			Transform newGround_middle = Instantiate (ground_middle.transform, new Vector3(front.position.x + 40, front.position.y, front.position.z), Quaternion.identity) as Transform;
+			newGround_middle.name = "ground_middle#" + front.position.x;
+			newGround_middle.SetParent(this.transform);
+		}
+		
+		if (Mathf.Sqrt(Mathf.Pow(player.position.x - (back.position.x - 40), 2)) <= distance) {
+			Transform newGround_middle = Instantiate (ground_middle.transform, new Vector3(back.position.x - 40, front.position.y, front.position.z), Quaternion.identity) as Transform;
+			newGround_middle.name = "ground_middle#" + back.position.x;
+			newGround_middle.SetParent(this.transform);
 		}
 
 		frontPosX = -2147483647;
@@ -173,13 +211,13 @@ public class BackgroundFollow : MonoBehaviour {
 		}
 		
 		if (Mathf.Sqrt(Mathf.Pow(front.position.x - player.position.x, 2)) <= distance) {
-			Transform newGround_front = Instantiate (ground_front.transform, new Vector3(front.position.x + 40, offset.y, 0.0f), Quaternion.identity) as Transform;
+			Transform newGround_front = Instantiate (ground_front.transform, new Vector3(front.position.x + 40, offset.y + 1.5f, 1.0f), Quaternion.identity) as Transform;
 			newGround_front.name = "ground_front#" + front.position.x;
 			newGround_front.SetParent(this.transform);
 		}
 		
 		if (Mathf.Sqrt(Mathf.Pow(player.position.x - (back.position.x - 40), 2)) <= distance) {
-			Transform newGround_front = Instantiate (ground_front.transform, new Vector3(back.position.x - 40, offset.y, 0.0f), Quaternion.identity) as Transform;
+			Transform newGround_front = Instantiate (ground_front.transform, new Vector3(back.position.x - 40, offset.y + 1.5f, 1.0f), Quaternion.identity) as Transform;
 			newGround_front.name = "ground_front#" + back.position.x;
 			newGround_front.SetParent(this.transform);
 		}
@@ -208,6 +246,13 @@ public class BackgroundFollow : MonoBehaviour {
 			}
 			if (child.tag.Equals("Ground_behind")) {
 				if (child == ground_behind.transform)
+					continue;
+				if (Mathf.Sqrt (Mathf.Pow(child.position.x - player.position.x, 2)) > distance) {
+					Destroy (child.gameObject);
+				}
+			}
+			if (child.tag.Equals("Ground_middle")) {
+				if (child == ground_middle.transform)
 					continue;
 				if (Mathf.Sqrt (Mathf.Pow(child.position.x - player.position.x, 2)) > distance) {
 					Destroy (child.gameObject);
