@@ -73,6 +73,7 @@ GameObject:
   - 4: {fileID: 410968}
   - 212: {fileID: 21265584}
   - 114: {fileID: 11487206}
+  - 114: {fileID: 11436844}
   m_Layer: 10
   m_Name: sun
   m_TagString: Untagged
@@ -303,6 +304,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 3.19999981, y: .800000012}
+--- !u!114 &11436844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20053cdfd339c3489b97b8f465896d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: -3.5, y: 4, z: 4.5}
+  camera: {fileID: 0}
 --- !u!114 &11473972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -548,7 +562,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 58c4009b38e80424ca1ae62e5e311a70, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

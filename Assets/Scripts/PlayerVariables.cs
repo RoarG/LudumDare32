@@ -8,6 +8,9 @@ public class PlayerVariables : MonoBehaviour {
 	public int fatnessLevel; // variable from 1-3?
 	static bool poweredUp = false;
 	static float lastPowerUpStart = 0;
+    public int madeFat;
+    public int distance;
+
 
     HealthBar healthbar;
 
@@ -38,6 +41,8 @@ public class PlayerVariables : MonoBehaviour {
 			// jumpVector changed only for testing purposes
 			PlayerMove.jumpVector = new Vector2(0.0f, 400.0f);
 		}
+
+        healthbar.DistanceChange = ((int) transform.position.x) / 10;
 
 	}
 	

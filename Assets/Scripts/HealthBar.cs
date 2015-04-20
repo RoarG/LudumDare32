@@ -10,6 +10,8 @@ public class HealthBar : MonoBehaviour {
     private float maxXvalue;
     public float maxHealth;
     public int currentHealth;
+    public int currentMadeFat;
+    public int currentDist;
 
     public float coolDown;
     private bool onCD;
@@ -17,6 +19,9 @@ public class HealthBar : MonoBehaviour {
     public Text healthText;
     public Image visualHealth;
     PlayerVariables playerVar;
+
+    public Text MadeFat;
+    public Text Distance;
 
     //Endrer fargen til barn når den er under denne.
     public int emptyAmmo = 20;
@@ -30,6 +35,34 @@ public class HealthBar : MonoBehaviour {
             }
     }
 
+    public int CurrentmadeFat
+    {
+        get { return currentMadeFat; }
+        set
+        {
+            currentMadeFat = value;
+            HandleFat();
+            playerVar.madeFat = currentMadeFat;
+        }
+    }
+
+    public int DistanceChange
+    {
+        get { return currentMadeFat; }
+        set
+        {
+            currentDist = value;
+            HandleDistance();
+            playerVar.distance = currentDist;
+        }
+    }
+
+    private void HandleFat()
+    {
+        MadeFat.text = "FatScore: " + currentMadeFat;
+  
+    }
+
 
 
 
@@ -41,7 +74,6 @@ public class HealthBar : MonoBehaviour {
         currentHealth = (int) maxHealth;
         onCD = false;
         playerVar = GetComponent<PlayerVariables>();
-        
 
 
     //    healthTransform
@@ -51,8 +83,15 @@ public class HealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    
+        
 	}
+
+    private void HandleDistance()
+    {
+        Distance.text = "Distance : " + playerVar.distance;
+        Debug.Log("TEST");
+       
+    }
 
     IEnumerator CoolDownDmg()
     {
@@ -64,7 +103,7 @@ public class HealthBar : MonoBehaviour {
 
     private void HandleHealth()
     {
-        healthText.text = "Fat: " + currentHealth + "%";
+        healthText.text = currentHealth + "% Fat";
 
         float currentXvalue = MapValues(currentHealth, 0, maxHealth, minXvalue, maxXvalue);
         Debug.Log("Current X value: " + currentXvalue + "  healthTransform: " + healthTransform.position);
@@ -90,8 +129,8 @@ public class HealthBar : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other) 
     {
-        Debug.Log("Ontrigger: " + other);
-        if (other.name == "Damage")
+        Debug.Log("Ontrigger: " + other.tag);
+        if (other.tag == "Damage")
         {
             Debug.Log("Taking Damage onCD: " + onCD  + "  currentHealth: " + currentHealth);
             if (!onCD && currentHealth > 0)
@@ -101,7 +140,7 @@ public class HealthBar : MonoBehaviour {
                 CurrentHealth -= 1;
             }
         }
-        if (other.name == "food")
+        if (other.tag == "food")
         {
             Debug.Log("Getting Healed" + onCD  + "  currentHealth: " + currentHealth);
             if (!onCD && currentHealth < maxHealth)

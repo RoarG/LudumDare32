@@ -479,6 +479,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   fatnessLevel: 0
+  madeFat: 0
+  distance: 0
 --- !u!114 &11431038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -494,9 +496,13 @@ MonoBehaviour:
   healthTransform: {fileID: 0}
   maxHealth: 94.3899994
   currentHealth: 0
+  currentMadeFat: 0
+  currentDist: 0
   coolDown: .5
   healthText: {fileID: 0}
   visualHealth: {fileID: 0}
+  MadeFat: {fileID: 0}
+  Distance: {fileID: 0}
   emptyAmmo: 20
 --- !u!114 &11443466
 MonoBehaviour:
