@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour {
     private float minXvalue;
     private float maxXvalue;
     public float maxHealth;
-    private int currentHealth;
+    public int currentHealth;
 
     public float coolDown;
     private bool onCD;
@@ -101,14 +101,15 @@ public class HealthBar : MonoBehaviour {
                 CurrentHealth -= 1;
             }
         }
-        if (other.name == "Health")
+        if (other.name == "food")
         {
             Debug.Log("Getting Healed" + onCD  + "  currentHealth: " + currentHealth);
             if (!onCD && currentHealth < maxHealth)
             {
-                Debug.Log("IF !oncd and currenhealth less than maxhealth");
+                Debug.Log("IF !oncd and currenhealth less than maxhealth: " + other.transform.gameObject);
                 StartCoroutine(CoolDownDmg());
-                CurrentHealth += 1;
+                CurrentHealth += 10;
+                Destroy(other.transform.gameObject);
             }
         }
     }

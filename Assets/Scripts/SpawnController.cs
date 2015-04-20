@@ -3,32 +3,33 @@ using System.Collections;
 
 public class SpawnController : MonoBehaviour
 {
+    //enemy
     public GameObject enemy;
     public Vector3 spawnValues;
-    public int enemyCount;
-    public float spawnWait;
-    public float startWait;
-    public float waveWait;
-    public int maxEnemy;
+    public int enemyCount = 5;
+    public float spawnWait = 0.3F;
+    public float startWait = 2;
+    public float waveWait = 2;
+    public int maxEnemy = 10;
 
 
     //Food
     public GameObject food;
     public Vector3 foodSpawnValues;
-    public int foodCount;
-    public float foodSpawnWait;
-    public float foodStartWait;
-    public float foodWaveWait;
-    public int maxFood;
+    public int foodCount = 3;
+    public float foodSpawnWait = 0.3F;
+    public float foodStartWait = 2;
+    public float foodWaveWait = 2;
+    public int maxFood = 5;
 
     //Alcohol
     public GameObject alcohol;
     public Vector3 alcSpawnValues;
-    public int alcCount;
-    public float alcSpawnWait;
-    public float alcStartWait;
-    public float alcWaveWait;
-    public int maxAlc;
+    public int alcCount = 2;
+    public float alcSpawnWait = 0.3F;
+    public float alcStartWait = 2;
+    public float alcWaveWait = 2;
+    public int maxAlc = 2;
 
     public GameObject player;
     public int spawnNum;
@@ -36,6 +37,27 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
+        //enemy
+        enemyCount = 5;
+        spawnWait = 0.3F;
+        startWait = 2;
+        waveWait = 2;
+        maxEnemy = 10;
+
+        //food
+        foodCount = 3;
+        foodSpawnWait = 0.3F;
+        foodStartWait = 2;
+        foodWaveWait = 2;
+        maxFood = 5;
+
+        //alcohol
+        alcCount = 2;
+        alcSpawnWait = 0.3F;
+        alcStartWait = 2;
+        alcWaveWait = 2;
+        maxAlc = 2;
+
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         StartCoroutine(Spawn());
     }
