@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 447926}
   - 212: {fileID: 21252564}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: tjukken_prep_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 455298}
   - 212: {fileID: 21274230}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: M_tynn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - 4: {fileID: 457852}
   - 212: {fileID: 21224820}
   - 114: {fileID: 11404778}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: M_skyter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479918}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: CameraFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - 114: {fileID: 11431038}
   - 50: {fileID: 5088458}
   - 61: {fileID: 6146270}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 425470}
   - 212: {fileID: 21278548}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: L_fot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 494590}
   - 212: {fileID: 21258792}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: R_fot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 418118}
   - 212: {fileID: 21244296}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: R_underarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472454}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: M_tykk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 498242}
   - 95: {fileID: 9526334}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Char_tykk
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 496066}
   - 212: {fileID: 21269220}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: M_undermage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 443400}
   - 212: {fileID: 21252274}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Hodet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409532}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: KarakterRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 403748}
   - 212: {fileID: 21297722}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: V_ArmPressa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ Animator:
   m_GameObject: {fileID: 170968}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ad3302014896bb44891fe7195ba0e0c5, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -474,10 +474,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 142734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d31df6846ac177f4b9d8424c3c26dbd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cc458ae03229904e992a127d3dc589d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
   fatnessLevel: 0
   madeFat: 0
   distance: 0
@@ -489,12 +489,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 142734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f26a79a698de424db62f181fc377bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 34bc91ba9a0fa9640ab306bb941be072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cachedY: 0
   healthTransform: {fileID: 0}
-  maxHealth: 94.3899994
+  maxHealth: 0
   currentHealth: 0
   currentMadeFat: 0
   currentDist: 0
@@ -512,17 +512,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 142734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e2b08f75103db4eb084f8d7618d564, type: 3}
+  m_Script: {fileID: 11500000, guid: ca2826b0090a08644a1721f67aa3d0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedForce: 10
   speed: 1
   differenceX: 0
-  posChange: 3
-  length: .899999976
+  posChange: 1
+  length: .600000024
   ground:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4608
 --- !u!212 &21224820
 SpriteRenderer:
   m_ObjectHideFlags: 1
