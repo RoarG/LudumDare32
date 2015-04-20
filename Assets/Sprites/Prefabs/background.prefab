@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 489180}
   - 212: {fileID: 21205160}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: horizon
   m_TagString: Horizon
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400810}
   - 212: {fileID: 21224162}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sky
   m_TagString: Sky
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 459284}
   - 212: {fileID: 21228810}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: mountains
   m_TagString: Mountains
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421964}
   - 212: {fileID: 21235024}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ground_behind
   m_TagString: Ground_behind
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 452296}
   - 212: {fileID: 21248802}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ground_front
   m_TagString: Ground_front
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 115824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa73a8743e7652646ab05a74c1ec6696, type: 3}
+  m_Script: {fileID: 11500000, guid: 3dd1c346906e64849bf7ccb16746c000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 3, z: 0}
@@ -324,37 +324,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 131286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1016893447, guid: dc40709d82cabbb4b94bad6f94ef4013, type: 3}
+  m_Script: {fileID: 11500000, guid: 23e70f02ba41bfb4c974750e7f12e4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ServerURI: 
-  Username: 
-  Password: 
-  Workspace: 
-  UseP4Config: 0
-  P4ConfigName: 
-  UnityVSSupport: 0
-  IncludeProjectFiles: 0
-  IncludeSolutionFiles: 0
-  ShowPaths: 0
-  AskBeforeCheckout: 0
-  DisplayStatusIcons: 0
-  Hostname: 
-  Charset: 
-  DiffToolPathname: 
-  DisplayP4Timings: 0
-  DisplayP4Commands: 0
-  CheckStatusForMenus: 0
-  CheckStatusForMenusMaxItems: 0
-  ConnectionTimeOut: 0
-  ProjectRoot: 
-  WarnOnSpecialCharacters: 0
-  UseIgnore: 0
-  IgnoreName: 
-  EnableLog: 0
-  LogPath: 
-  SaveConfigAsset: 0
-  IgnoreLines: 
+  offset: {x: -3.5, y: 4, z: 4.5}
+  camera: {fileID: 0}
 --- !u!114 &11490390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,7 +337,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 151314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e8e1465c941aa49aa000feadf52e39, type: 3}
+  m_Script: {fileID: 11500000, guid: a53805eafaf53614ab3237e27b64ab73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 4, y: 2}
@@ -392,7 +366,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: edd68e9692ee073469b7e3c73a633c32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 948b1a64eba2b4c499717928e56c86ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21224162
 SpriteRenderer:
@@ -418,7 +392,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d18be04b39d777e4e970336ea029a7c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52617d63fd2b2334ba92dbc3b1515756, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21228810
 SpriteRenderer:
@@ -444,7 +418,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 20c7b23fa12ca9e46be9a0638738e438, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e332e1cab0410448baf846a09fb0060, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21235024
 SpriteRenderer:
@@ -470,7 +444,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1b6f2915682b4a4e9e0e105c5bc1c28, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed11041788d26f946a2a5908e7e2f280, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21248802
 SpriteRenderer:
@@ -496,7 +470,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d481d75c46e0b7e41b5185c07481a9bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9368a108ad9a33149aefa674e1ff0622, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21265584
 SpriteRenderer:
@@ -522,7 +496,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d99a24008fb963745aea806783faab97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03b927fc4826bbc4587547f35dc558f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21271456
 SpriteRenderer:
@@ -548,7 +522,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 58c4009b38e80424ca1ae62e5e311a70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c69291d1bdbffcd43831fe0c3c10a46d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
