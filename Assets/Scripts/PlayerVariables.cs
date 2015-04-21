@@ -5,12 +5,14 @@ public class PlayerVariables : MonoBehaviour {
 
 	public int health = 100; // variable from 0-100
 	public static float weight = 100.0f; // variable from 0-100
-	public int fatnessLevel; // variable from 1-3?
+	public int fatState = 3; // variable from 1-3?
 	static bool poweredUp = false;
 	static float lastPowerUpStart = 0;
+	public bool isFat = true;
+
     public int madeFat;
     public int distance;
-
+    public bool powerUpCD;
 
     HealthBar healthbar;
 
@@ -19,6 +21,7 @@ public class PlayerVariables : MonoBehaviour {
 	void Start () {
 		updateMass();
         healthbar = GetComponent<HealthBar>();
+		transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isFat", isFat);
 
 	}
 	
@@ -42,7 +45,27 @@ public class PlayerVariables : MonoBehaviour {
 			PlayerMove.jumpVector = new Vector2(0.0f, 400.0f);
 		}
 
-        healthbar.DistanceChange = ((int) transform.position.x) / 10;
+
+
+
+
+		if (Input.GetKeyDown(KeyCode.F)){
+			health -= 10;
+		}
+
+		if (Input.GetKeyDown(KeyCode.G)){
+			health += 10;
+		}
+		bool change = updateFatnessLevel();
+		if (change){
+			 changeState();
+		}
+
+        if (health <= 0)
+        {
+        //    PlayerPrefs.SetInt("Player Score", GameObject.Find("HealthBar").GetComponent<HealthBar>().currentMadeFat);
+            Application.LoadLevel(2);
+        }
 
 	}
 	
@@ -58,7 +81,8 @@ public class PlayerVariables : MonoBehaviour {
 	}
 
 	void updateMass(){
-		GetComponent<Rigidbody2D> ().mass = 1.0f+(2*(weight/100));
+        float hp = health;
+        GetComponent<Rigidbody2D>().mass = 1.0f + (1 * (hp / 100));
 	}
 
 	public static void powerUp(){
@@ -68,6 +92,39 @@ public class PlayerVariables : MonoBehaviour {
 
 	public bool isPoweredUp(){
 		return poweredUp;
+	}
+
+	bool updateFatnessLevel(){
+		bool change = false;
+		// 100 - 67
+		if (health > 66 && fatState != 3){
+			fatState = 3;
+			change = true;
+		// 66 - 34
+		} else if (health < 67 && health > 33 && fatState != 2){
+			fatState = 2;
+			change = true;
+		// 33 - 1
+		} else if (health < 34 && health > 0 && fatState != 1){
+			fatState = 1;
+			change = true;
+		} else if (health < 1 && fatState != 0){
+				fatState = 0;
+				change = true;
+			}
+		return change;
+	}
+
+	void changeState(){
+		int i = 0;
+		while (i < 4){
+			if (i == fatState){
+				GameObject.Find("Player").GetComponent<PlayerMove>().hidePlayer(false, i);
+			} else {
+				GameObject.Find("Player").GetComponent<PlayerMove>().hidePlayer(true, i);
+			}
+            i++;
+		}
 	}
 
 

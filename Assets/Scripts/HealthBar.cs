@@ -19,9 +19,18 @@ public class HealthBar : MonoBehaviour {
     public Text healthText;
     public Image visualHealth;
     PlayerVariables playerVar;
+    public int foodPlus;
+    public int carrotMinus;
+    public int madeFat;
 
     public Text MadeFat;
     public Text Distance;
+
+    public float vol;
+    public AudioClip smatt;
+    public AudioClip hit;
+    
+    private AudioSource source;
 
     //Endrer fargen til barn når den er under denne.
     public int emptyAmmo = 20;
@@ -41,6 +50,7 @@ public class HealthBar : MonoBehaviour {
         set
         {
             currentMadeFat = value;
+            Debug.Log("currentmade!!");
             HandleFat();
             playerVar.madeFat = currentMadeFat;
         }
@@ -74,7 +84,7 @@ public class HealthBar : MonoBehaviour {
         currentHealth = (int) maxHealth;
         onCD = false;
         playerVar = GetComponent<PlayerVariables>();
-
+        source = GetComponent<AudioSource>();
 
     //    healthTransform
      //   healthText
@@ -146,10 +156,42 @@ public class HealthBar : MonoBehaviour {
             if (!onCD && currentHealth < maxHealth)
             {
                 Debug.Log("IF !oncd and currenhealth less than maxhealth: " + other.transform.gameObject);
-                StartCoroutine(CoolDownDmg());
-                CurrentHealth += 10;
+                source.PlayOneShot(smatt, vol);
+                CurrentHealth += foodPlus;
                 Destroy(other.transform.gameObject);
             }
+            Destroy(other.transform.gameObject);
         }
+        if (other.tag == "alcohol")
+        {
+            Debug.Log("Getting Drunk" + onCD + "  currentHealth: " + currentHealth);
+            if (playerVar.powerUpCD == false)
+            {
+                source.PlayOneShot(smatt, vol);
+                Debug.Log("POWERUP!!");
+                HandlePowerUp();
+                CurrentmadeFat += madeFat;
+                Destroy(other.transform.gameObject);
+            }
+            Destroy(other.transform.gameObject);
+        }
+        if (other.tag == "carrot")
+        {
+            Debug.Log("Damage" + onCD + "  currentHealth: " + currentHealth);
+            if (!onCD)
+            {
+                Debug.Log("IF !oncd and currenhealth less than maxhealth: " + other.transform.gameObject);
+                source.PlayOneShot(smatt, vol);
+                StartCoroutine(CoolDownDmg());
+                CurrentHealth -= carrotMinus;
+                //Destroy(other.transform.gameObject);
+            }
+        }
+    }
+
+    private void HandlePowerUp()
+    {
+        Debug.Log("POWERUP!!");
+       
     }
 }

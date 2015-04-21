@@ -15,6 +15,9 @@ TagManager:
   - Clouds
   - Projectile_fat0
   - Ground_middle
+  - food
+  - carrot
+  - alcohol
   layers:
   - Default
   - TransparentFX

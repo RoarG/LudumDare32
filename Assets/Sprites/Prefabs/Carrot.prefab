@@ -1,42 +1,42 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &167346
+--- !u!1 &149410
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 446762}
-  - 212: {fileID: 21248598}
-  - 61: {fileID: 6109536}
-  - 50: {fileID: 5093486}
-  - 61: {fileID: 6187774}
-  m_Layer: 12
-  m_Name: alcohol
-  m_TagString: alcohol
+  - 4: {fileID: 479268}
+  - 212: {fileID: 21213154}
+  - 114: {fileID: 11448304}
+  - 61: {fileID: 6176416}
+  - 50: {fileID: 5025824}
+  m_Layer: 11
+  m_Name: Carrot
+  m_TagString: carrot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &446762
+--- !u!4 &479268
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167346}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.68999958, y: 2.07999992, z: 0}
-  m_LocalScale: {x: .5, y: .5, z: 1}
+  m_GameObject: {fileID: 149410}
+  m_LocalRotation: {x: .00270525739, y: .999996364, z: -4.40742387e-10, w: -1.62920088e-07}
+  m_LocalPosition: {x: 2.4000001, y: 1.53079557, z: 2}
+  m_LocalScale: {x: .299999982, y: .299999982, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5093486
+--- !u!50 &5025824
 Rigidbody2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167346}
+  m_GameObject: {fileID: 149410}
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
@@ -46,38 +46,36 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6109536
+--- !u!61 &6176416
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167346}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: .810000002, y: 2.31999993}
---- !u!61 &6187774
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167346}
+  m_GameObject: {fileID: 149410}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -4.76837158e-07}
   serializedVersion: 2
-  m_Size: {x: .360000014, y: 2.03999996}
---- !u!212 &21248598
+  m_Size: {x: 2.51000071, y: .49999994}
+--- !u!114 &11448304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d7e0495bb1c3e4cb453bef8fe3a3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &21213154
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167346}
+  m_GameObject: {fileID: 149410}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -95,8 +93,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1ba5b66aab4d6d24e863099f91f647fc, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300036, guid: ae4c860aae3f7494896809d4d2f1cf1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -107,5 +105,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 167346}
+  m_RootGameObject: {fileID: 149410}
   m_IsPrefabParent: 1

@@ -7,7 +7,7 @@ public class ArmRotation : MonoBehaviour {
 	public float differenceX;
 	static bool changeDirection = false;
 	static string direction;
-	float changeX = 0.5f;
+	float changeX = 0f;
 	public float thePosX;
 
 
@@ -15,9 +15,9 @@ public class ArmRotation : MonoBehaviour {
 	void Update () {
 
 		if (changeDirection){
-			Vector3 theScale = transform.localScale;
-			theScale.y *= -1;
-			transform.localScale = theScale;
+			//Vector3 theScale = transform.localScale;
+			//theScale.y *= -1;
+			//transform.localScale = theScale;
 
 			Vector3 thePosition = transform.position;
 
@@ -42,7 +42,7 @@ public class ArmRotation : MonoBehaviour {
 		if (differenceX  > 0){
 			transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 		}else if (differenceX < 0) {
-			transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+			transform.rotation = Quaternion.Euler(0f, 0f, -rotZ + 180);
 		}
 
 
