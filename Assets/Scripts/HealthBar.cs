@@ -58,7 +58,7 @@ public class HealthBar : MonoBehaviour {
 
     public int DistanceChange
     {
-        get { return currentMadeFat; }
+        get { return currentDist; }
         set
         {
             currentDist = value;
