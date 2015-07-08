@@ -50,7 +50,7 @@ public class HealthBar : MonoBehaviour {
         set
         {
             currentMadeFat = value;
-            Debug.Log("currentmade!!");
+            Debug.Log("currentmade!!!");
             HandleFat();
             playerVar.madeFat = currentMadeFat;
         }
