@@ -1,0 +1,297 @@
+fileFormatVersion: 2
+guid: ae4c860aae3f7494896809d4d2f1cf1c
+timeCreated: 1429428343
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mage_dau
+    21300002: mage_feit_2
+    21300004: Hodet_lever
+    21300006: "Hodet_d\xF8d"
+    21300008: mage_feit_3
+    21300010: mage_feit_0
+    21300012: Skjerf
+    21300014: nakkefyll
+    21300016: mage_feit_1
+    21300018: midja
+    21300020: vegan-hipster_15
+    21300022: "venstre_l\xE5r"
+    21300024: venstre_fot
+    21300026: "H\xF8yre_l\xE5r"
+    21300028: vegan-hipster_19
+    21300030: vegan-hipster_20
+    21300032: K_arm
+    21300034: V_arm
+    21300036: Gulrot
+    21300038: "h\xF8yre_fot"
+    21300040: kastearm
+    21300042: "Venstre_l\xE5rbit"
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: mage_dau
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 645
+        width: 415
+        height: 354
+      alignment: 9
+      pivot: {x: .528851211, y: .0759153217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mage_feit_2
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 659
+        width: 286
+        height: 305
+      alignment: 9
+      pivot: {x: .522542477, y: .0923361853}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hodet_lever
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 715
+        width: 132
+        height: 278
+      alignment: 9
+      pivot: {x: .624703586, y: .068880789}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "Hodet_d\xF8d"
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 715
+        width: 130
+        height: 285
+      alignment: 9
+      pivot: {x: .647725761, y: .100510128}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mage_feit_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 252
+        width: 348
+        height: 370
+      alignment: 9
+      pivot: {x: .592631221, y: .0992326066}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mage_feit_0
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 307
+        width: 117
+        height: 308
+      alignment: 9
+      pivot: {x: .687588692, y: .125888273}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skjerf
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 443
+        width: 132
+        height: 216
+      alignment: 9
+      pivot: {x: .531176031, y: .741324842}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: nakkefyll
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 551
+        width: 70
+        height: 94
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mage_feit_1
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 282
+        width: 161
+        height: 246
+      alignment: 9
+      pivot: {x: .542600274, y: .126395255}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: midja
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 134
+        width: 84
+        height: 91
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: vegan-hipster_15
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 197
+        width: 228
+        height: 60
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "venstre_l\xE5r"
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 6
+        width: 38
+        height: 116
+      alignment: 9
+      pivot: {x: .475683004, y: .802705646}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: venstre_fot
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 8
+        width: 28
+        height: 111
+      alignment: 9
+      pivot: {x: .433996469, y: .882939219}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "H\xF8yre_l\xE5r"
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 6
+        width: 41
+        height: 111
+      alignment: 9
+      pivot: {x: .477462411, y: .824665606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: vegan-hipster_19
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 6
+        width: 52
+        height: 152
+      alignment: 9
+      pivot: {x: .252033532, y: .887797117}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: vegan-hipster_20
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 114
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: K_arm
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 99
+        width: 123
+        height: 65
+      alignment: 9
+      pivot: {x: .148066327, y: .301626831}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: V_arm
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 4
+        width: 125
+        height: 78
+      alignment: 9
+      pivot: {x: .868407249, y: .759774327}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gulrot
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 13
+        width: 251
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "h\xF8yre_fot"
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 251
+        width: 30
+        height: 110
+      alignment: 9
+      pivot: {x: .439646393, y: .901563585}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: kastearm
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 291
+        width: 44
+        height: 159
+      alignment: 9
+      pivot: {x: .715313971, y: .0670242757}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "Venstre_l\xE5rbit"
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 343
+        width: 11
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
