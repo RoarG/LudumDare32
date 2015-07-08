@@ -63,7 +63,8 @@ public class PlayerVariables : MonoBehaviour {
 
         if (health <= 0)
         {
-        //    PlayerPrefs.SetInt("Player Score", GameObject.Find("HealthBar").GetComponent<HealthBar>().currentMadeFat);
+            PlayerPrefs.SetInt("Player Score", GetComponent<HealthBar>().currentMadeFat);
+            PlayerPrefs.SetInt("Player Dist", GetComponent<HealthBar>().currentDist);
             Application.LoadLevel(2);
         }
 
