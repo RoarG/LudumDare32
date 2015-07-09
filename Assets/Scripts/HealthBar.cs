@@ -99,7 +99,7 @@ public class HealthBar : MonoBehaviour {
     private void HandleDistance()
     {
         Distance.text = "Distance : " + playerVar.distance;
-        Debug.Log("TEST");
+        //Debug.Log("TEST");
        
     }
 
@@ -149,6 +149,7 @@ public class HealthBar : MonoBehaviour {
                 StartCoroutine(CoolDownDmg());
                 CurrentHealth -= 1;
             }
+            Destroy(other.transform.gameObject);
         }
         if (other.tag == "food")
         {
@@ -184,7 +185,7 @@ public class HealthBar : MonoBehaviour {
                 source.PlayOneShot(smatt, vol);
                 StartCoroutine(CoolDownDmg());
                 CurrentHealth -= carrotMinus;
-                //Destroy(other.transform.gameObject);
+                Destroy(other.transform.gameObject);
             }
         }
     }

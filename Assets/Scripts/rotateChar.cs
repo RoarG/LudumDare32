@@ -17,7 +17,7 @@ public class rotateChar : MonoBehaviour {
     void rotate() {
         
         transform.Rotate(0f, 0f, -5f);
-        Debug.Log("SPinning the wheels... carrots");
+        //Debug.Log("SPinning the wheels... carrots");
        
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6126732}
   - 50: {fileID: 5011252}
   - 61: {fileID: 6184540}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: food
   m_TagString: food
   m_Icon: {fileID: 0}
