@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PlayerVariables : MonoBehaviour {
 
-	public int health = 100; // variable from 0-100
-	public static float weight = 100.0f; // variable from 0-100
+	public static int health = 100; // variable from 0-100
 	public int fatState = 3; // variable from 1-3?
 	static bool poweredUp = false;
 	static float lastPowerUpStart = 0;
+    public int currentHealth;
 	public bool isFat = true;
 
     public int madeFat;
@@ -22,14 +22,15 @@ public class PlayerVariables : MonoBehaviour {
 		updateMass();
         healthbar = GetComponent<HealthBar>();
 		transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isFat", isFat);
+        currentHealth = health;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+        currentHealth = health;
 
-		changeWeight (-0.1f);
 		updateMass ();
 
 		// implement powerUp function here
@@ -45,15 +46,13 @@ public class PlayerVariables : MonoBehaviour {
 			PlayerMove.jumpVector = new Vector2(0.0f, 400.0f);
 		}
 
-
-
-
-
+        // TODO: Testknapp
 		if (Input.GetKeyDown(KeyCode.F)){
 			health -= 10;
 		}
 
-		if (Input.GetKeyDown(KeyCode.G)){
+        // TODO: Testknapp
+        if (Input.GetKeyDown(KeyCode.G)){
 			health += 10;
 		}
 		bool change = updateFatnessLevel();
@@ -70,20 +69,20 @@ public class PlayerVariables : MonoBehaviour {
 
 	}
 	
-	public void changeHealth(int change){
-		health = health + change;
+	public static void changeHealth(int change){
+        if ((health + change) < 0)
+        {
+            health = 0;
+        } else
+        {
+            health = health + change;
+        }
+        
 	}
 	
-	public void changeWeight(float change){
-		weight = weight + change;
-		if (weight < 1) {
-			weight = 1;
-		}
-	}
-
+    // mass depends on health/weight. Jump height and runspeed is affected by mass.
 	void updateMass(){
-        float hp = health;
-        GetComponent<Rigidbody2D>().mass = 1.0f + (1 * (hp / 100));
+        GetComponent<Rigidbody2D>().mass = 1.0f + (health / 200.0f);
 	}
 
 	public static void powerUp(){

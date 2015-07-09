@@ -352,7 +352,7 @@ GameObject:
   - 114: {fileID: 11491236}
   - 82: {fileID: 8274148}
   m_Layer: 12
-  m_Name: Enemy
+  m_Name: enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1573,6 +1573,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5058074
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -1581,11 +1582,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &6120174
 BoxCollider2D:
   m_ObjectHideFlags: 1

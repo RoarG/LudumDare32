@@ -40,7 +40,7 @@ public class HealthBar : MonoBehaviour {
         set { 
             currentHealth = value;
             HandleHealth();
-            playerVar.health = currentHealth;
+            PlayerVariables.health = currentHealth;
             }
     }
 
@@ -93,7 +93,11 @@ public class HealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if (currentHealth != PlayerVariables.health)
+        {
+            currentHealth = PlayerVariables.health;
+            HandleHealth();
+        }
 	}
 
     private void HandleDistance()
