@@ -127,8 +127,4 @@ public class PlayerVariables : MonoBehaviour {
             i++;
 		}
 	}
-
-
-		
-		
 }

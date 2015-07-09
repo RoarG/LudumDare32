@@ -142,10 +142,6 @@ public class PlayerMove : MonoBehaviour
             hidePlayer(true, 3);
         }
         differenceX = moveDir.x;
-
-
-
-
     }
 
     IEnumerator Fire()
