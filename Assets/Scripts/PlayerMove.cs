@@ -153,10 +153,6 @@ public class PlayerMove : MonoBehaviour
         **/
 
         differenceX = moveDir.x;
-
-
-
-
     }
 
     IEnumerator Fire()

@@ -6,7 +6,7 @@ public class SpawnController : MonoBehaviour
     //enemy
     public GameObject enemy;
     public Vector3 spawnValues;
-    public int enemyCount = 5;
+    public int enemyCount = 0;
     public float spawnWait = 0.3F;
     public float startWait = 2;
     public float waveWait = 2;
@@ -16,7 +16,7 @@ public class SpawnController : MonoBehaviour
     //Food
     public GameObject food;
     public Vector3 foodSpawnValues;
-    public int foodCount = 3;
+    public int foodCount = 0;
     public float foodSpawnWait = 0.3F;
     public float foodStartWait = 2;
     public float foodWaveWait = 2;
@@ -25,7 +25,7 @@ public class SpawnController : MonoBehaviour
     //Alcohol
     public GameObject alcohol;
     public Vector3 alcSpawnValues;
-    public int alcCount = 2;
+    public int alcCount = 0;
     public float alcSpawnWait = 0.3F;
     public float alcStartWait = 2;
     public float alcWaveWait = 2;
@@ -38,21 +38,21 @@ public class SpawnController : MonoBehaviour
     void Start()
     {
         //enemy
-        enemyCount = 5;
+        enemyCount = 0;
         spawnWait = 0.3F;
         startWait = 2;
         waveWait = 2;
         maxEnemy = 10;
 
         //food
-        foodCount = 3;
+        foodCount = 0;
         foodSpawnWait = 0.3F;
         foodStartWait = 2;
         foodWaveWait = 2;
         maxFood = 5;
 
         //alcohol
-        alcCount = 2;
+        alcCount = 0;
         alcSpawnWait = 0.3F;
         alcStartWait = 2;
         alcWaveWait = 2;
@@ -69,7 +69,7 @@ public class SpawnController : MonoBehaviour
         {
             yield return new WaitForSeconds(startWait);
             spawnNum = (int)Random.Range(0, 100);
-            Debug.Log("SpanNum: " + spawnNum);
+            //Debug.Log("SpanNum: " + spawnNum);
             if (spawnNum < 10)
             {
                 StartCoroutine(SpawnAlc());
@@ -84,7 +84,7 @@ public class SpawnController : MonoBehaviour
             }
 
         }
-        
+
     }
 
     IEnumerator SpawnEnemy()
@@ -92,10 +92,11 @@ public class SpawnController : MonoBehaviour
         if (enemyCount < maxEnemy)
         {
             Vector3 playerpos = player.transform.position;
-            Vector3 spawnPosition = new Vector3(playerpos.x + Random.Range(10,40), playerpos.y + 10, playerpos.z);
-            Debug.Log("SpawnEnemy: " + spawnPosition + " enemycount: " + enemyCount);
+            Vector3 spawnPosition = new Vector3(playerpos.x + Random.Range(10, 40), 1.5f, 0.0f);
+            //Debug.Log("SpawnEnemy: " + spawnPosition + " enemycount: " + enemyCount);
             Quaternion spawnRotation = Quaternion.identity;
             Instantiate(enemy, spawnPosition, spawnRotation);
+            enemyCount++;
             yield return new WaitForSeconds(spawnWait);
         }
     }
@@ -105,10 +106,11 @@ public class SpawnController : MonoBehaviour
         if (foodCount < maxFood)
         {
             Vector3 playerpos = player.transform.position;
-            Vector3 spawnPosition = new Vector3(playerpos.x + Random.Range(10, 40), playerpos.y + 10, playerpos.z);
-            Debug.Log("Food Spawn: " + spawnPosition + " Foodcount: " + foodCount);
+            Vector3 spawnPosition = new Vector3(playerpos.x + Random.Range(10, 40), 1.5f, -0.2f);
+            //Debug.Log("Food Spawn: " + spawnPosition + " Foodcount: " + foodCount);
             Quaternion spawnRotation = Quaternion.identity;
-            Instantiate(food, spawnPosition, spawnRotation);
+            Transform new_food = Instantiate(food, spawnPosition, spawnRotation) as Transform;
+            //Destroy(new_food.gameObject, 10.0f);
             yield return new WaitForSeconds(foodSpawnWait);
         }
     }
@@ -118,10 +120,11 @@ public class SpawnController : MonoBehaviour
         if (alcCount < maxAlc)
         {
             Vector3 playerpos = player.transform.position;
-            Vector3 spawnPosition = new Vector3(playerpos.x + Random.Range(10, 40), playerpos.y + 10, playerpos.z);
-            Debug.Log("Alc Spawn: " + spawnPosition + " Alccount: " + alcCount);
+            Vector3 spawnPosition = new Vector3(playerpos.x + Random.Range(10, 40), 1.5f, -0.2f);
+            //Debug.Log("Alc Spawn: " + spawnPosition + " Alccount: " + alcCount);
             Quaternion spawnRotation = Quaternion.identity;
-            Instantiate(alcohol, spawnPosition, spawnRotation);
+            Transform new_alc = Instantiate(alcohol, spawnPosition, spawnRotation) as Transform;
+            //Destroy(new_alc.gameObject, 10.0f);
             yield return new WaitForSeconds(alcSpawnWait);
         }
     }
