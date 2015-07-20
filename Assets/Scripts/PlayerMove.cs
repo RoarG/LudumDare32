@@ -5,11 +5,13 @@ public class PlayerMove : MonoBehaviour
 {
 
 
-    private float weight;
+    private static int weight;
 
     public float speedForce = 10.0f;
-    public static Vector2 jumpVector = new Vector2(0.0f, 800.0f);
+    public static Vector2 jumpVector = new Vector2(0.0f, 350.0f);
     public float speed = 1.0f;
+    
+    public double cameraFollowPosX;
     public float differenceX;
     public static bool facingRight = true;
     public int posChange = 0;
@@ -32,13 +34,16 @@ public class PlayerMove : MonoBehaviour
 
     private AudioSource source;
 
+    // Offset of the camerafollow when character is turned. Used to avoid character spazing out when mouse is position over the middle of the character
+    private double changeDirOffset = 0.21;
+
 
 
     // Use this for initialization
     void Start()
     {
         source = GetComponent<AudioSource>();
-        weight = PlayerVariables.weight;
+        weight = PlayerVariables.health;
         GetComponent<Rigidbody2D>().fixedAngle = true;
         hidePlayer(true, 0);
         hidePlayer(true, 1);
@@ -48,12 +53,14 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Rotate character
         playerPosX = (int)transform.position.x;
         GetComponent<HealthBar>().DistanceChange = playerPosX;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 moveDir = (mousePos - transform.Find("CameraFollow").position).normalized;
+        Vector3 moveDir = (mousePos - transform.Find("CameraFollow").position);
+        cameraFollowPosX = transform.Find("CameraFollow").position.x;
 
-        if (differenceX > 0 && !facingRight)
+        if (differenceX > changeDirOffset && !facingRight)
         {
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
@@ -64,7 +71,7 @@ public class PlayerMove : MonoBehaviour
             oldPos.x -= posChange;
             transform.Find("Karakter_3").position = oldPos;
         }
-        else if (differenceX < 0 && facingRight)
+        else if (differenceX < -changeDirOffset && facingRight)
         {
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
@@ -77,30 +84,40 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        weight = PlayerVariables.weight;
+        // Movement     
+        weight = PlayerVariables.health;
         speed = (speedForce - ((speedForce - 1) * weight / 100));
         if (Input.GetKey(KeyCode.A))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-(speedForce - (4 * weight / 100)), GetComponent<Rigidbody2D>().velocity.y);
+            isMoving = true;
+            transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isWalking", true);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(speedForce - (4 * weight / 100), GetComponent<Rigidbody2D>().velocity.y);
+            isMoving = true;
+            transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isWalking", true);
         }
         else
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+            isMoving = false;
+            transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isWalking", false);
         }
 
+        // Deactivated
+        /**
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             oldSpeed = speedForce;
-            speedForce *= 10.0f;
+            speedForce *= 2.0f;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speedForce = oldSpeed;
         }
+        **/
 
         isGrounded = Physics2D.Linecast(this.transform.position, new Vector2(transform.position.x, transform.position.y - length), ground);// OverlapCircle (transform.position, radius, ground);
 
@@ -109,6 +126,7 @@ public class PlayerMove : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce(jumpVector, ForceMode2D.Force);
         }
 
+        // Shooting
         if (Input.GetKey(KeyCode.Mouse0))
         {
             if (!shootOnCD)
@@ -120,6 +138,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        /** Moved this into the movement section 
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             isMoving = true;
@@ -131,16 +150,8 @@ public class PlayerMove : MonoBehaviour
             isMoving = false;
             transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isWalking", false);
         }
+        **/
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            hidePlayer(false, 3);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            hidePlayer(true, 3);
-        }
         differenceX = moveDir.x;
     }
 
@@ -149,6 +160,8 @@ public class PlayerMove : MonoBehaviour
         shootOnCD = true;
         isShooting = true;
         transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isShooting", true);
+        ShootProjectile.shoot();
+        PlayerVariables.changeHealth(-1);
         yield return new WaitForSeconds(0.14f);
         source.PlayOneShot(skudd, vol);
         isShooting = false;
@@ -162,11 +175,6 @@ public class PlayerMove : MonoBehaviour
         {
             PlayerVariables.powerUp();
         }
-    }
-
-    float setMass()
-    {
-        return 1.0f + (1 * (weight / 100));
     }
 
     public void hidePlayer(bool hidden, int player)
