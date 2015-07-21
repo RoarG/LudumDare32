@@ -5,6 +5,7 @@ public class Menu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Debug.Log("TEST");
 	
 	}
 	
@@ -17,6 +18,8 @@ public class Menu : MonoBehaviour {
     {
         Debug.Log("ONDOWN");
         Application.LoadLevel(1);
+        PlayerPrefs.DeleteAll();
+        PlayerVariables.health = 100;
         
     }
 }
