@@ -22,6 +22,10 @@ public class PlayerVariables : MonoBehaviour {
 		updateMass();
         healthbar = GetComponent<HealthBar>();
 		transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isFat", isFat);
+        transform.Find("Karakter_3").GetComponent<Animator>().SetInteger("fatState", fatState);
+        transform.Find("Karakter_2").GetComponent<Animator>().SetInteger("fatState", fatState);
+        transform.Find("Karakter_1").GetComponent<Animator>().SetInteger("fatState", fatState);
+        transform.Find("Karakter_0").GetComponent<Animator>().SetInteger("fatState", fatState);
         currentHealth = health;
 
 	}
@@ -111,8 +115,12 @@ public class PlayerVariables : MonoBehaviour {
 		} else if (health < 1 && fatState != 0){
 				fatState = 0;
 				change = true;
-			}
-		return change;
+		}
+        transform.Find("Karakter_3").GetComponent<Animator>().SetInteger("fatState", fatState);
+        transform.Find("Karakter_2").GetComponent<Animator>().SetInteger("fatState", fatState);
+        transform.Find("Karakter_1").GetComponent<Animator>().SetInteger("fatState", fatState);
+        transform.Find("Karakter_0").GetComponent<Animator>().SetInteger("fatState", fatState);
+        return change;
 	}
 
 	void changeState(){

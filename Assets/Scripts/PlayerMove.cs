@@ -92,18 +92,27 @@ public class PlayerMove : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(-(speedForce - (4 * weight / 100)), GetComponent<Rigidbody2D>().velocity.y);
             isMoving = true;
             transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isWalking", true);
+            transform.Find("Karakter_2").GetComponent<Animator>().SetBool("isWalking", true);
+            transform.Find("Karakter_1").GetComponent<Animator>().SetBool("isWalking", true);
+            transform.Find("Karakter_0").GetComponent<Animator>().SetBool("isWalking", true);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(speedForce - (4 * weight / 100), GetComponent<Rigidbody2D>().velocity.y);
             isMoving = true;
             transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isWalking", true);
+            transform.Find("Karakter_2").GetComponent<Animator>().SetBool("isWalking", true);
+            transform.Find("Karakter_1").GetComponent<Animator>().SetBool("isWalking", true);
+            transform.Find("Karakter_0").GetComponent<Animator>().SetBool("isWalking", true);
         }
         else
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
             isMoving = false;
             transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isWalking", false);
+            transform.Find("Karakter_2").GetComponent<Animator>().SetBool("isWalking", false);
+            transform.Find("Karakter_1").GetComponent<Animator>().SetBool("isWalking", false);
+            transform.Find("Karakter_0").GetComponent<Animator>().SetBool("isWalking", false);
         }
 
         // Deactivated
@@ -160,12 +169,18 @@ public class PlayerMove : MonoBehaviour
         shootOnCD = true;
         isShooting = true;
         transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isShooting", true);
+        transform.Find("Karakter_2").GetComponent<Animator>().SetBool("isShooting", true);
+        transform.Find("Karakter_1").GetComponent<Animator>().SetBool("isShooting", true);
+        transform.Find("Karakter_0").GetComponent<Animator>().SetBool("isShooting", true);
         ShootProjectile.shoot();
         PlayerVariables.changeHealth(-1);
         yield return new WaitForSeconds(0.14f);
         source.PlayOneShot(skudd, vol);
         isShooting = false;
         transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isShooting", false);
+        transform.Find("Karakter_2").GetComponent<Animator>().SetBool("isShooting", false);
+        transform.Find("Karakter_1").GetComponent<Animator>().SetBool("isShooting", false);
+        transform.Find("Karakter_0").GetComponent<Animator>().SetBool("isShooting", false);
         shootOnCD = false;
     }
 

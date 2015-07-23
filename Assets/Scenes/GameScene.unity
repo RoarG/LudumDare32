@@ -303,6 +303,7 @@ BoxCollider2D:
   m_Size: {x: 4.19000006, y: 1}
 --- !u!50 &114081541
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5058074, guid: f9002fb9c75a56649b3ac496ca16c415,
     type: 2}
@@ -312,11 +313,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &114081542
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -456,6 +457,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &303505286
 MonoBehaviour:
@@ -597,14 +599,22 @@ Prefab:
       propertyPath: Distance
       value: 
       objectReference: {fileID: 1521218243}
-    - target: {fileID: 479918, guid: b47e906f3c00c5247a736ef1792a009b, type: 2}
+    - target: {fileID: 9520500, guid: b47e906f3c00c5247a736ef1792a009b, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9520500, guid: b47e906f3c00c5247a736ef1792a009b, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 99f240750f9a8d2469345e73d2a521d2, type: 2}
+    - target: {fileID: 468468, guid: b47e906f3c00c5247a736ef1792a009b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .699999988
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 479918, guid: b47e906f3c00c5247a736ef1792a009b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.11000001
-      objectReference: {fileID: 0}
+    - target: {fileID: 9572240, guid: b47e906f3c00c5247a736ef1792a009b, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 99f240750f9a8d2469345e73d2a521d2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b47e906f3c00c5247a736ef1792a009b, type: 2}
   m_IsPrefabParent: 0
@@ -2098,6 +2108,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!4 &1692809793
 Transform:
   m_ObjectHideFlags: 0
