@@ -317,7 +317,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &114081542
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -885,44 +885,16 @@ Prefab:
       value: SpawnSystem
       objectReference: {fileID: 0}
     - target: {fileID: 430932, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.x
-      value: .5
+      propertyPath: m_LocalPosition.y
+      value: -1.53999996
       objectReference: {fileID: 0}
-    - target: {fileID: 437934, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.x
-      value: .5
+    - target: {fileID: 442508, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.6099999
       objectReference: {fileID: 0}
-    - target: {fileID: 499400, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 430932, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 437934, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 499400, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 415358, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 466908, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 415358, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 466908, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
-      propertyPath: m_LocalScale.y
-      value: .5
+    - target: {fileID: 442508, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.24000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6cf1e86e99ac7540834197f0b96e05d, type: 2}
