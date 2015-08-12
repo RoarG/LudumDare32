@@ -37,6 +37,14 @@ public class PlayerMove : MonoBehaviour
     public float doubleJumpCDTimer = 0.0f;
     float doubleJumpCDDuration = 5.0f;
 
+    /* CD-timer for sprint and CD duration */
+    public float sprintCDTimer = 0.0f;
+    float sprintCDDuration = 5.0f;
+    float sprintDuration = 1.0f;
+    float sprintTimer = 0.0f;
+    bool isSprinting;
+    
+
     private AudioSource source;
 
     // Offset of the camerafollow when character is turned. Used to avoid character spazing out when mouse is position over the middle of the character
@@ -53,6 +61,7 @@ public class PlayerMove : MonoBehaviour
         hidePlayer(true, 0);
         hidePlayer(true, 1);
         hidePlayer(true, 2);
+        isSprinting = false;
     }
 
     // Update is called once per frame
@@ -153,6 +162,34 @@ public class PlayerMove : MonoBehaviour
             HealthBar.startDoubleJumpCD(doubleJumpCDDuration);
         }
 
+
+        /* Sprint */
+        if (sprintCDTimer > 0.0f)       
+            sprintCDTimer -= Time.deltaTime;
+
+        if (sprintCDTimer < 0.0f)
+            sprintCDTimer = 0.0f;
+        // sprint activate
+        if (Input.GetKeyDown(KeyCode.LeftShift) && sprintCDTimer == 0.0f)
+        {
+            isSprinting = true;
+            sprintTimer = sprintDuration;
+            sprintCDTimer = sprintCDDuration;
+            oldSpeed = speedForce;
+            speedForce *= 1.5f;
+            HealthBar.startSprintCD(sprintCDDuration);
+        }
+  
+        if (isSprinting)
+        {
+            sprintTimer -= Time.deltaTime;
+            if (sprintTimer < 0.0f)
+            {
+                isSprinting = false;
+                speedForce = oldSpeed;
+            }
+        }
+
         // Shooting
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -168,18 +205,8 @@ public class PlayerMove : MonoBehaviour
 
         differenceX = moveDir.x;
         
-        // Deactivated
-        /**
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            oldSpeed = speedForce;
-            speedForce *= 2.0f;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            speedForce = oldSpeed;
-        }
-        **/
+
+        
 
     }
 

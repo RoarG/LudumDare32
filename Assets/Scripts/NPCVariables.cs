@@ -7,7 +7,7 @@ public class NPCVariables : MonoBehaviour
     public bool randomWalk = true;
     public bool isAttacking = false;
     public float attackTimer = 0.5f;
-    public float projectileSpeed = 1500.0f;
+    public float projectileSpeed = 1250.0f;     
     public int health = 100; // variable from 0-100
     private int fatState = 1; // variable from 1-3?
 

@@ -37,6 +37,11 @@ public class HealthBar : MonoBehaviour {
     static float doubleJumpCDTime;
     bool cdTimerIsActive;
 
+    /* Cooldown timer for sprint */
+    public Text sprintCDText;
+    static float sprintCDTime;
+    bool sprintOnCD;
+
     //Endrer fargen til barn når den er under denne.
     public int emptyAmmo = 20;
     public int CurrentHealth
@@ -90,12 +95,13 @@ public class HealthBar : MonoBehaviour {
         onCD = false;
         playerVar = GetComponent<PlayerVariables>();
         source = GetComponent<AudioSource>();
-        deactivateCDText();
+        cdTimerIsActive = false;
+        doubleJumpCDText.text = "J";
 
-    //    healthTransform
-     //   healthText
-     //   visualHealth = GameObject.Find("Health").GetComponent<Image>;
-	}
+        //    healthTransform
+        //   healthText
+        //   visualHealth = GameObject.Find("Health").GetComponent<Image>;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -108,7 +114,7 @@ public class HealthBar : MonoBehaviour {
         {
             if (!cdTimerIsActive)
             {
-                activateCDText();
+                cdTimerIsActive = true;
             } else
             {
             doubleJumpCDTime -= Time.deltaTime;              
@@ -118,7 +124,27 @@ public class HealthBar : MonoBehaviour {
         {
             if (cdTimerIsActive)
             {
-                deactivateCDText();
+                cdTimerIsActive = false;
+                doubleJumpCDText.text = "J";
+            }
+        }
+
+        if (sprintCDTime > 0.0f)
+        {
+            if (!sprintOnCD)
+            {
+                sprintOnCD = true;
+            } else
+            {
+                sprintCDTime -= Time.deltaTime;
+                sprintCDText.text = sprintCDTime.ToString("n0");
+            }
+        } else
+        {
+            if (sprintOnCD)
+            {
+                sprintOnCD = false;
+                sprintCDText.text = "S";
             }
         }
         
@@ -145,11 +171,11 @@ public class HealthBar : MonoBehaviour {
         healthText.text = currentHealth + "% Fat";
 
         float currentXvalue = MapValues(currentHealth, 0, maxHealth, minXvalue, maxXvalue);
-        Debug.Log("Current X value: " + currentXvalue + "  healthTransform: " + healthTransform.position);
+        // Debug.Log("Current X value: " + currentXvalue + "  healthTransform: " + healthTransform.position);
 
         healthTransform.localScale = new Vector3(currentXvalue, cachedY);
 
-        Debug.Log("Current X value: " + currentXvalue + "  healthTransform: " + healthTransform.position);
+        // Debug.Log("Current X value: " + currentXvalue + "  healthTransform: " + healthTransform.position);
 
         if (currentHealth > emptyAmmo) //More than emptyAmmo
         {
@@ -168,13 +194,13 @@ public class HealthBar : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other) 
     {
-        Debug.Log("Ontrigger: " + other.tag);
+        // Debug.Log("Ontrigger: " + other.tag);
         if (other.tag == "Damage")
         {
-            Debug.Log("Taking Damage onCD: " + onCD  + "  currentHealth: " + currentHealth);
+            // Debug.Log("Taking Damage onCD: " + onCD  + "  currentHealth: " + currentHealth);
             if (!onCD && currentHealth > 0)
             {
-                Debug.Log("IF !oncd and currenHEalth");
+                // Debug.Log("IF !oncd and currenHEalth");
                 StartCoroutine(CoolDownDmg());
                 CurrentHealth -= 1;
             }
@@ -182,10 +208,10 @@ public class HealthBar : MonoBehaviour {
         }
         if (other.tag == "food")
         {
-            Debug.Log("Getting Healed" + onCD  + "  currentHealth: " + currentHealth);
+            // Debug.Log("Getting Healed" + onCD  + "  currentHealth: " + currentHealth);
             if (!onCD && currentHealth < maxHealth)
             {
-                Debug.Log("IF !oncd and currenhealth less than maxhealth: " + other.transform.gameObject);
+                // Debug.Log("IF !oncd and currenhealth less than maxhealth: " + other.transform.gameObject);
                 source.PlayOneShot(smatt, vol);
                 if ((CurrentHealth + foodPlus) > 100)
                 {
@@ -200,11 +226,11 @@ public class HealthBar : MonoBehaviour {
         }
         if (other.tag == "alcohol")
         {
-            Debug.Log("Getting Drunk" + onCD + "  currentHealth: " + currentHealth);
+            // Debug.Log("Getting Drunk" + onCD + "  currentHealth: " + currentHealth);
             if (playerVar.powerUpCD == false)
             {
                 source.PlayOneShot(smatt, vol);
-                Debug.Log("POWERUP!!");
+                // Debug.Log("POWERUP!!");
                 HandlePowerUp();
                 CurrentmadeFat += madeFat;
                 Destroy(other.transform.gameObject);
@@ -213,14 +239,15 @@ public class HealthBar : MonoBehaviour {
         }
         if (other.tag == "carrot")
         {
-            Debug.Log("Damage" + onCD + "  currentHealth: " + currentHealth);
-            if (!onCD)
+            // Debug.Log("Damage" + onCD + "  currentHealth: " + currentHealth);
+            Debug.Log("Carrot height: " + other.transform.position.y);
+            if (!onCD && other.transform.position.y > 1.4)
             {
-                Debug.Log("IF !oncd and currenhealth less than maxhealth: " + other.transform.gameObject);
+                // Debug.Log("IF !oncd and currenhealth less than maxhealth: " + other.transform.gameObject);
                 source.PlayOneShot(smatt, vol);
                 StartCoroutine(CoolDownDmg());
                 CurrentHealth -= carrotMinus;
-                Destroy(other.transform.gameObject);
+                Destroy(other.transform.gameObject);                
             }
         }
     }
@@ -231,22 +258,16 @@ public class HealthBar : MonoBehaviour {
        
     }
 
-    void activateCDText()
-    {
-        doubleJumpCDText.enabled = true;
-        doubleJumpCDText.text = (doubleJumpCDTime + "");
-        cdTimerIsActive = true;
-    }
-
-    public void deactivateCDText()
-    {
-        doubleJumpCDText.enabled = false;
-        cdTimerIsActive = false;
-    }
 
     public static void startDoubleJumpCD(float time)
     {
         Debug.Log("Double Jump CD CALLED");
         doubleJumpCDTime = time;
+    }
+
+    public static void startSprintCD(float time)
+    {
+        Debug.Log("Sprint CD CALLED");
+        sprintCDTime = time;
     }
 }

@@ -50,8 +50,8 @@ public class RandomWalk : MonoBehaviour {
 				Transform newProjectile = Instantiate (GameObject.Find ("carrot").transform, new Vector3(transform.position.x, transform.position.y + 0.5f, 0.0f), Quaternion.identity) as Transform;
 				if (dir < 0)
 					newProjectile.localScale *= -1;
-				Destroy (newProjectile.gameObject, 2.0f);
-				newProjectile.transform.GetComponent<Rigidbody2D>().AddForce (new Vector2 (dir * GetComponent<NPCVariables> ().projectileSpeed, GetComponent<NPCVariables> ().projectileSpeed), ForceMode2D.Force);
+				Destroy (newProjectile.gameObject, 1.5f);
+				newProjectile.transform.GetComponent<Rigidbody2D>().AddForce (new Vector2 (dir * GetComponent<NPCVariables> ().projectileSpeed, 0.75f*GetComponent<NPCVariables> ().projectileSpeed), ForceMode2D.Force);
 				newProjectile.transform.Rotate(new Vector3(0.0f, 0.0f, -90.0f));
 				GetComponent<NPCVariables>().isAttacking = false;
 				GetComponent<NPCVariables>().randomWalk = true;
