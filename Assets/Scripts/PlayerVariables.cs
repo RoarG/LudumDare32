@@ -73,13 +73,23 @@ public class PlayerVariables : MonoBehaviour {
 
 	}
 	
+    /*
+    * Function that alters the health of the character, capped at 100
+    */
 	public static void changeHealth(int change){
         if ((health + change) < 0)
         {
             health = 0;
         } else
         {
-            health = health + change;
+            if ((health + change) > 100)
+            {
+            health = 100;
+            } else
+            {
+                health = health + change;
+            }
+
         }
         
 	}

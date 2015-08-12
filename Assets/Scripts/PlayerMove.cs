@@ -8,7 +8,8 @@ public class PlayerMove : MonoBehaviour
     private static int weight;
 
     public float speedForce = 10.0f;
-    public static Vector2 jumpVector = new Vector2(0.0f, 350.0f);
+    public static Vector2 jumpVector = new Vector2(0.0f, 300.0f);
+    Vector2 doubleJumpVector = new Vector2(0.0f, 300.0f);
     public float speed = 1.0f;
     
     public double cameraFollowPosX;
@@ -21,7 +22,7 @@ public class PlayerMove : MonoBehaviour
     public bool isShooting = false;
     public bool isMoving = false;
     public bool shootOnCD = false;
-    private bool isGrounded;
+    public bool isGrounded;
     public bool isDead = false;
 
     public float length = 0.9f;
@@ -31,6 +32,10 @@ public class PlayerMove : MonoBehaviour
     public AudioClip magen;
     public AudioClip skudd;
     public AudioClip skuddLoop;
+
+    /* CD-timer for double jump and CD duration */
+    public float doubleJumpCDTimer = 0.0f;
+    float doubleJumpCDDuration = 5.0f;
 
     private AudioSource source;
 
@@ -53,6 +58,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         // Rotate character
         playerPosX = (int)transform.position.x;
         GetComponent<HealthBar>().DistanceChange = playerPosX;
@@ -115,6 +121,53 @@ public class PlayerMove : MonoBehaviour
             transform.Find("Karakter_0").GetComponent<Animator>().SetBool("isWalking", false);
         }
 
+
+
+        /* The old (commented) isGrounded were to slow to react so that double jumping could occure without enabling the timer, so it has now been updated to a more responsive version */
+        // isGrounded = Physics2D.Linecast(this.transform.position, new Vector2(transform.position.x, transform.position.y - length), ground);// OverlapCircle (transform.position, radius, ground);
+        isGrounded = GetComponent<Rigidbody2D>().velocity.y == 0;
+
+
+        /* 
+        * Jumping - Double jump every 5 seconds
+        */
+        if (doubleJumpCDTimer > 0.0f)
+        {
+            doubleJumpCDTimer -= Time.deltaTime;
+        }
+        if (doubleJumpCDTimer < 0.0f)
+        {
+            doubleJumpCDTimer = 0.0f;
+        }
+        // Single jump
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            GetComponent<Rigidbody2D>().AddForce(jumpVector, ForceMode2D.Force);
+        }
+        // Double jump
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && doubleJumpCDTimer==0.0f)
+        {
+            Debug.Log("DOUBLE JUMP");
+            doubleJumpCDTimer = doubleJumpCDDuration;
+            GetComponent<Rigidbody2D>().AddForce(doubleJumpVector, ForceMode2D.Force);
+            HealthBar.startDoubleJumpCD(doubleJumpCDDuration);
+        }
+
+        // Shooting
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            if (!shootOnCD)
+            {
+                source.PlayOneShot(magen, vol);
+                StopCoroutine(Fire());
+                StartCoroutine(Fire());
+            }
+        }
+
+        
+
+        differenceX = moveDir.x;
+        
         // Deactivated
         /**
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -128,40 +181,6 @@ public class PlayerMove : MonoBehaviour
         }
         **/
 
-        isGrounded = Physics2D.Linecast(this.transform.position, new Vector2(transform.position.x, transform.position.y - length), ground);// OverlapCircle (transform.position, radius, ground);
-
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            GetComponent<Rigidbody2D>().AddForce(jumpVector, ForceMode2D.Force);
-        }
-
-        // Shooting
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            if (!shootOnCD)
-            {
-                source.PlayOneShot(magen, vol);
-                StopCoroutine(Fire());
-                StartCoroutine(Fire());
-
-            }
-        }
-
-        /** Moved this into the movement section 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-        {
-            isMoving = true;
-            transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isWalking", true);
-        }
-
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-        {
-            isMoving = false;
-            transform.Find("Karakter_3").GetComponent<Animator>().SetBool("isWalking", false);
-        }
-        **/
-
-        differenceX = moveDir.x;
     }
 
     IEnumerator Fire()

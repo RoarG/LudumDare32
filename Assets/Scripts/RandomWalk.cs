@@ -60,7 +60,7 @@ public class RandomWalk : MonoBehaviour {
 
 				attackTimer = GetComponent<NPCVariables> ().attackTimer;
 			} else {
-				attackTimer -= 0.01;
+				attackTimer -= Time.deltaTime;
 			}
 			if (Mathf.Sqrt (Mathf.Pow (curPos.x - GameObject.Find("Player").transform.position.x, 2)) > aggroRange) {
 				this.GetComponent<NPCVariables> ().isAttacking = false;

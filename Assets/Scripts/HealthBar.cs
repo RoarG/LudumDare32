@@ -32,6 +32,11 @@ public class HealthBar : MonoBehaviour {
     
     private AudioSource source;
 
+    /* Cooldown timer for double jump */
+    public Text doubleJumpCDText;
+    static float doubleJumpCDTime;
+    bool cdTimerIsActive;
+
     //Endrer fargen til barn når den er under denne.
     public int emptyAmmo = 20;
     public int CurrentHealth
@@ -85,6 +90,7 @@ public class HealthBar : MonoBehaviour {
         onCD = false;
         playerVar = GetComponent<PlayerVariables>();
         source = GetComponent<AudioSource>();
+        deactivateCDText();
 
     //    healthTransform
      //   healthText
@@ -98,7 +104,26 @@ public class HealthBar : MonoBehaviour {
             currentHealth = PlayerVariables.health;
             HandleHealth();
         }
-	}
+        if (doubleJumpCDTime > 0.0f)
+        {
+            if (!cdTimerIsActive)
+            {
+                activateCDText();
+            } else
+            {
+            doubleJumpCDTime -= Time.deltaTime;              
+            doubleJumpCDText.text = doubleJumpCDTime.ToString("n0");
+            }
+        } else
+        {
+            if (cdTimerIsActive)
+            {
+                deactivateCDText();
+            }
+        }
+        
+        
+    }
 
     private void HandleDistance()
     {
@@ -162,7 +187,13 @@ public class HealthBar : MonoBehaviour {
             {
                 Debug.Log("IF !oncd and currenhealth less than maxhealth: " + other.transform.gameObject);
                 source.PlayOneShot(smatt, vol);
+                if ((CurrentHealth + foodPlus) > 100)
+                {
+                    CurrentHealth = 100;
+                } else
+                {
                 CurrentHealth += foodPlus;
+                }
                 Destroy(other.transform.gameObject);
             }
             Destroy(other.transform.gameObject);
@@ -198,5 +229,24 @@ public class HealthBar : MonoBehaviour {
     {
         Debug.Log("POWERUP!!");
        
+    }
+
+    void activateCDText()
+    {
+        doubleJumpCDText.enabled = true;
+        doubleJumpCDText.text = (doubleJumpCDTime + "");
+        cdTimerIsActive = true;
+    }
+
+    public void deactivateCDText()
+    {
+        doubleJumpCDText.enabled = false;
+        cdTimerIsActive = false;
+    }
+
+    public static void startDoubleJumpCD(float time)
+    {
+        Debug.Log("Double Jump CD CALLED");
+        doubleJumpCDTime = time;
     }
 }
