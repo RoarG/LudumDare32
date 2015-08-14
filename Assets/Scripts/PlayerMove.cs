@@ -36,6 +36,8 @@ public class PlayerMove : MonoBehaviour
     /* CD-timer for double jump and CD duration */
     public float doubleJumpCDTimer = 0.0f;
     float doubleJumpCDDuration = 5.0f;
+    /* jump testing */
+    public float velocityY;
 
     /* CD-timer for sprint and CD duration */
     public float sprintCDTimer = 0.0f;
@@ -43,6 +45,10 @@ public class PlayerMove : MonoBehaviour
     float sprintDuration = 1.0f;
     float sprintTimer = 0.0f;
     bool isSprinting;
+
+    /* length testing */
+    public float windowWidth;
+
     
 
     private AudioSource source;
@@ -62,12 +68,17 @@ public class PlayerMove : MonoBehaviour
         hidePlayer(true, 1);
         hidePlayer(true, 2);
         isSprinting = false;
+        velocityY = GetComponent<Rigidbody2D>().velocity.y;
+
+        // Testing variables
+        windowWidth = Input.mousePosition.x - transform.position.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        windowWidth = Input.mousePosition.x - transform.position.x;
+
         // Rotate character
         playerPosX = (int)transform.position.x;
         GetComponent<HealthBar>().DistanceChange = playerPosX;
@@ -134,11 +145,13 @@ public class PlayerMove : MonoBehaviour
 
         /* The old (commented) isGrounded were to slow to react so that double jumping could occure without enabling the timer, so it has now been updated to a more responsive version */
         // isGrounded = Physics2D.Linecast(this.transform.position, new Vector2(transform.position.x, transform.position.y - length), ground);// OverlapCircle (transform.position, radius, ground);
-        isGrounded = GetComponent<Rigidbody2D>().velocity.y == 0;
+        velocityY = GetComponent<Rigidbody2D>().velocity.y;
+        isGrounded = velocityY < 1e-8 && velocityY > -1e-8;
 
 
         /* 
         * Jumping - Double jump every 5 seconds
+        * Minor glitch where velocity.y is around 6-7*e-9 or something after double jump or while moving
         */
         if (doubleJumpCDTimer > 0.0f)
         {
@@ -163,7 +176,7 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        /* Sprint */
+        /* Sprint */        
         if (sprintCDTimer > 0.0f)       
             sprintCDTimer -= Time.deltaTime;
 
@@ -198,6 +211,17 @@ public class PlayerMove : MonoBehaviour
                 source.PlayOneShot(magen, vol);
                 StopCoroutine(Fire());
                 StartCoroutine(Fire());
+            }
+        }
+
+        // Food consumption
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            if (PlayerVariables.burgerCount > 0 && PlayerVariables.health != 100)
+            {
+                Debug.Log("Right Mouse Down " + PlayerVariables.burgerCount);
+                HealthBar.eatBurger();
+                PlayerVariables.changeBurgerCount(-1);            
             }
         }
 

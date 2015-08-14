@@ -71,8 +71,21 @@ public class RandomWalk : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag.Equals("Projectile_fat0")) {
-			GetComponent<NPCVariables>().health -= 25;
-			Destroy (coll.gameObject);
+            float distance = transform.position.x - GameObject.Find("Player").transform.position.x;
+            if (distance > 0)
+            {
+                if (distance < 12.5)
+                {
+                    Debug.Log("HIT: " + distance);
+                    GetComponent<NPCVariables>().health -= 25;
+                    Destroy (coll.gameObject);
+
+                }
+            } else
+            {
+                GetComponent<NPCVariables>().health -= 25;
+                Destroy(coll.gameObject);
+            }
 		}		
 	}
 }

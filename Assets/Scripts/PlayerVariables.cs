@@ -13,6 +13,7 @@ public class PlayerVariables : MonoBehaviour {
     public int madeFat;
     public int distance;
     public bool powerUpCD;
+    public static int burgerCount;
 
     HealthBar healthbar;
 
@@ -27,6 +28,7 @@ public class PlayerVariables : MonoBehaviour {
         transform.Find("Karakter_1").GetComponent<Animator>().SetInteger("fatState", fatState);
         transform.Find("Karakter_0").GetComponent<Animator>().SetInteger("fatState", fatState);
         currentHealth = health;
+        burgerCount = 0;
 
 	}
 	
@@ -144,4 +146,10 @@ public class PlayerVariables : MonoBehaviour {
             i++;
 		}
 	}
+
+    public static void changeBurgerCount(int i)
+    {
+        Debug.Log("Burger Count Changed: " + i);
+        burgerCount += i;
+    }
 }

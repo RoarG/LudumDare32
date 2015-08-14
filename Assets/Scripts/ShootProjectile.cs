@@ -57,7 +57,7 @@ public class ShootProjectile : MonoBehaviour {
         if (dir.x < 0)
             newProjectile.localScale *= -1;
         Destroy(newProjectile.gameObject, 2.0f);
-        newProjectile.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir.x * 1500, dir.y * 1000));
+        newProjectile.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir.x * 1500, dir.y * 1500));
         newProjectile.name = "projectile_fat0";
         // newProjectile.SetParent(this.transform);
     }

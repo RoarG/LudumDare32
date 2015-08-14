@@ -42,6 +42,10 @@ public class HealthBar : MonoBehaviour {
     static float sprintCDTime;
     bool sprintOnCD;
 
+    /* Burger/food functionality */
+    public Text burgerText;
+    public static bool burgerEaten;
+
     //Endrer fargen til barn når den er under denne.
     public int emptyAmmo = 20;
     public int CurrentHealth
@@ -97,6 +101,8 @@ public class HealthBar : MonoBehaviour {
         source = GetComponent<AudioSource>();
         cdTimerIsActive = false;
         doubleJumpCDText.text = "J";
+        burgerText.text = "X " + PlayerVariables.burgerCount;
+        burgerEaten = false;
 
         //    healthTransform
         //   healthText
@@ -105,6 +111,17 @@ public class HealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // if burger is eaten, increase health an set notice that the burger has been eaten
+        if (burgerEaten)
+        {
+            Debug.Log("BURGER EATEN");
+            if (CurrentHealth + foodPlus > 100)        
+                CurrentHealth = 100;
+            else            
+                CurrentHealth += foodPlus;            
+            burgerEaten = false;
+        }
+        burgerText.text = "X " + PlayerVariables.burgerCount;
         if (currentHealth != PlayerVariables.health)
         {
             currentHealth = PlayerVariables.health;
@@ -208,6 +225,8 @@ public class HealthBar : MonoBehaviour {
         }
         if (other.tag == "food")
         {
+            /*
+            * Changed the entire functionality of burgers
             // Debug.Log("Getting Healed" + onCD  + "  currentHealth: " + currentHealth);
             if (!onCD && currentHealth < maxHealth)
             {
@@ -221,6 +240,13 @@ public class HealthBar : MonoBehaviour {
                 CurrentHealth += foodPlus;
                 }
                 Destroy(other.transform.gameObject);
+            }
+            Destroy(other.transform.gameObject);
+            */
+            if (PlayerVariables.burgerCount < 5)
+            {
+                Debug.Log("Burger picked up");
+                PlayerVariables.changeBurgerCount(1);
             }
             Destroy(other.transform.gameObject);
         }
@@ -270,4 +296,10 @@ public class HealthBar : MonoBehaviour {
         Debug.Log("Sprint CD CALLED");
         sprintCDTime = time;
     }
+
+    public static void eatBurger()
+    {
+        burgerEaten = true;
+    }
+
 }
